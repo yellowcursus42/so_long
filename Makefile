@@ -24,16 +24,18 @@ REMOVE 			= rm -f
 
 SRCS_DIR		= ./src/
 
+# all except header file.
 SRCS 			= $(addprefix $(SRCS_DIR),\
-				so_long.c			\
-				ft_check_map.c		\
-				ft_close_game.c		\
-				ft_free_memory.c	\
-				ft_handle_input.c	\
-				ft_init_game.c		\
-				ft_init_map.c		\
-				ft_render_map.c		\
-				ft_utils.c)
+					free_memory.c\
+					game_init.c\
+					handle_close.c\
+					handle_input.c\
+					map_check.c\
+					map_init.c\
+					map_render.c\
+					so_long.c\
+					utils.c\
+					)
 
 
 

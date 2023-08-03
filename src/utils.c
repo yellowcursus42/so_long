@@ -17,3 +17,9 @@ int	get_first_emptyline_index(char *map)
 	}
 	return (-1);
 }
+
+int	ft_error_msg(char *message)
+{
+	ft_printf(RED"Error\n"GREY"%s\n"RESET, message);
+	return false;
+}

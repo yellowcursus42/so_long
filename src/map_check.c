@@ -1,6 +1,5 @@
 #include "so_long.h"
 
-
 int	ft_check_rows(t_map map)
 {
 	int	i;
