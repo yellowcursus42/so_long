@@ -81,8 +81,8 @@ int map_check_emptyline(t_map map){
 	i = 0;
 	while (i < map.rows)
 	{
-		if (ft_strlen( map.full[i] ) == 0)
-			return error_msg("Excess empty line.");
+		if (ft_strlen( map.full[i] ) <= 1)
+			return error_msg("empty line in between.");
 		i++;
 	}
 	return true;
