@@ -1,34 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skulkamt <skulkamt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/03 20:18:07 by skulkamt          #+#    #+#             */
+/*   Updated: 2023/08/03 21:42:24 by skulkamt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 t_image	identify_sprite(t_game *game, int y, int x)
-{	
+{
 	char	parameter;
 
 	parameter = game->map.full[y][x];
 	if (parameter == WALL)
-		return game->wall;
+		return (game->wall);
 	else if (parameter == FLOOR)
-		return game->floor;
+		return (game->floor);
 	else if (parameter == COINS)
-		return game->coins;
+		return (game->coins);
 	else if (parameter == PLAYER)
-		return game->player;
+		return (game->player);
 	else if (parameter == MAP_EXIT)
 	{
 		if (game->map.coins == 0)
-			return game->exit_open;
+			return (game->exit_open);
 		else
-			return game->exit_closed;
+			return (game->exit_closed);
 	}
 	else
-		return game->floor;
+		return (game->floor);
 }
-
 
 void	render_sprite(t_game *game, t_image sprite, int line, int column)
 {
-	mlx_put_image_to_window (game->mlx_ptr, game->win_ptr, \
-	sprite.xpm_ptr, column * sprite.width, line * sprite.height);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite.xpm_ptr, column
+		* sprite.width, line * sprite.height);
 }
 
 void	render_movements(t_game *game)
@@ -45,8 +56,9 @@ void	render_movements(t_game *game)
 
 int	render_map(t_game *game)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	t_image	sprite;
 
 	y = 0;
 	while (y < game->map.rows)
@@ -54,7 +66,7 @@ int	render_map(t_game *game)
 		x = 0;
 		while (x < game->map.columns)
 		{
-			t_image sprite = identify_sprite(game, y, x);
+			sprite = identify_sprite(game, y, x);
 			render_sprite(game, sprite, y, x);
 			x++;
 		}
