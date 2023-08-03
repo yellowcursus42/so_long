@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-t_image	ft_identify_sprite(t_game *game, int y, int x)
+t_image	identify_sprite(t_game *game, int y, int x)
 {	
 	char	parameter;
 
@@ -16,7 +16,7 @@ t_image	ft_identify_sprite(t_game *game, int y, int x)
 	else if (parameter == MAP_EXIT)
 	{
 		if (game->map.coins == 0)
-			return game->open_exit;
+			return game->exit_open;
 		else
 			return game->exit_closed;
 	}
@@ -25,13 +25,13 @@ t_image	ft_identify_sprite(t_game *game, int y, int x)
 }
 
 
-void	ft_render_sprite(t_game *game, t_image sprite, int line, int column)
+void	render_sprite(t_game *game, t_image sprite, int line, int column)
 {
 	mlx_put_image_to_window (game->mlx_ptr, game->win_ptr, \
 	sprite.xpm_ptr, column * sprite.width, line * sprite.height);
 }
 
-void	ft_print_movements(t_game *game)
+void	render_movements(t_game *game)
 {
 	char	*movements;
 	char	*phrase;
@@ -43,7 +43,7 @@ void	ft_print_movements(t_game *game)
 	free(phrase);
 }
 
-int	ft_render_map(t_game *game)
+int	render_map(t_game *game)
 {
 	int	x;
 	int	y;
@@ -54,12 +54,12 @@ int	ft_render_map(t_game *game)
 		x = 0;
 		while (x < game->map.columns)
 		{
-			t_image sprite = ft_identify_sprite(game, y, x);
-			ft_render_sprite(game, sprite, y, x);
+			t_image sprite = identify_sprite(game, y, x);
+			render_sprite(game, sprite, y, x);
 			x++;
 		}
 		y++;
 	}
-	ft_print_movements(game);
+	render_movements(game);
 	return (0);
 }

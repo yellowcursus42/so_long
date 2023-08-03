@@ -1,25 +1,15 @@
 #include "so_long.h"
 
-int	get_first_emptyline_index(char *map)
-{
-	int i;
-
-	i = 0;
-	if (map[0] == '\n')
-		return (0);
-	else if (map[ft_strlen(map) - 1] == '\n')
-		return (ft_strlen(map) - 1);
-	while (map[i + 1])
-	{
-		if (map[i] == '\n' && map[i + 1] == '\n')
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int	ft_error_msg(char *message)
+int	error_msg(char *message)
 {
 	ft_printf(RED"Error\n"GREY"%s\n"RESET, message);
 	return false;
+}
+
+int	load_sprite(void *mlx, char *path, t_image *sprite)
+{
+	sprite->xpm_ptr = mlx_xpm_file_to_image(mlx, path, &sprite->width, &sprite->height);
+	if (sprite->xpm_ptr == NULL)
+		return error_msg("Couldn't find a sprite. Does it exist?");
+	return true;
 }

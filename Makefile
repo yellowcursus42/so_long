@@ -32,7 +32,7 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 					handle_input.c\
 					map_check.c\
 					map_init.c\
-					map_render.c\
+					render.c\
 					so_long.c\
 					utils.c\
 					)

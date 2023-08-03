@@ -1,18 +1,18 @@
 #include "so_long.h"
 
-int	ft_check_cli_args(int argc, char **argv)
+int	cli_arg_check(int argc, char **argv)
 {
 	if (argc > 2)
-		return (ft_error_msg("Only single argument required"));
+		return (error_msg("Only single argument required"));
 	if (argc < 2)
-		return (ft_error_msg("Map file is missing."));
+		return (error_msg("Map file is missing."));
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4) != 0)
-		return (ft_error_msg("Invalid file extension (require .ber)."));
+		return (error_msg("Invalid file extension (require .ber)."));
 	return true;
 }
 
 
-int	ft_init_map(t_map *map, char *map_path)
+int	map_init(t_map *map, char *map_path)
 {
 	char *map_temp;
 	char *line_temp;
@@ -20,7 +20,7 @@ int	ft_init_map(t_map *map, char *map_path)
 
 	map_fd = open(map_path, O_RDONLY);
 	if (map_fd == -1)
-		return (ft_error_msg("Can't open map file"));
+		return (error_msg("Can't open map file"));
 	map_temp = ft_strdup("");
 	map->rows = 0;
 	while (true)
@@ -35,16 +35,8 @@ int	ft_init_map(t_map *map, char *map_path)
 		map->rows++;
 	}
 	close(map_fd);
-	if (get_first_emptyline_index(map_temp) != -1)
-	{
-		free(map_temp);
-		return ft_error_msg("Excess empty line.");
-	}
-	else
-	{
-		map->full = ft_split(map_temp, '\n');
-		free(map_temp);
-		return true;
-	}
+	map->full = ft_split(map_temp, '\n');
+	free(map_temp);
+	return true;
 }
 

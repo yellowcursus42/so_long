@@ -84,25 +84,22 @@ typedef struct s_game
 	t_image		wall;
 	t_image		floor;
 	t_image		coins;
-	t_image		open_exit;
+	t_image		exit_open;
 	t_image		exit_closed;
 	t_image		player;
 }	t_game;
 
-int	ft_check_cli_args(int argc, char **argv);
-int	ft_init_map(t_map *map, char *map_path);
-void	ft_check_for_empty_line(char *map, t_game *game);
-int	ft_init_vars(t_game *game);
-int	ft_check_map(t_game *game);
-size_t	ft_strlen_line(const char *str);
-int	ft_init_mlx(t_game *game);
-int	ft_init_sprites(t_game *game);
-int	ft_render_map(t_game *game);
-int	ft_handle_input(int keysym, t_game *game);
-int	ft_close_win(t_game *game);
-int		ft_error_msg(char *message);
-int	ft_close_by_user(t_game *game);
-void	ft_free_all_allocated_memory(t_game *game);
-int	get_first_emptyline_index(char *map);
-
+int	cli_arg_check(int argc, char **argv);
+void	free_game(t_game *game);
+int	game_init_vars(t_game *game);
+int	game_init_mlx(t_game *game);
+int	game_load_spries(t_game *game);
+int	handle_close_user(t_game *game);
+int	handle_close_win(t_game *game);
+int	handle_input(int keysym, t_game *game);
+int	map_check(t_map *map);
+int	map_init(t_map *map, char *map_path);
+int	render_map(t_game *game);
+int	load_sprite(void *mlx, char *path, t_image *sprite);
+int	error_msg(char *message);
 #endif
