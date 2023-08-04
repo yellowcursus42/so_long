@@ -6,7 +6,7 @@
 /*   By: skulkamt <skulkamt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:17:53 by skulkamt          #+#    #+#             */
-/*   Updated: 2023/08/03 21:42:24 by skulkamt         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:40:08 by skulkamt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int	game_load_spries(t_game *game)
 	return (load_sprite(mlx, WALL_XPM, &game->wall) && load_sprite(mlx,
 			FLOOR_XPM, &game->floor) && load_sprite(mlx, COINS_XPM,
 			&game->coins) && load_sprite(mlx, PLAYER_FRONT_XPM, &game->player)
-		&& load_sprite(mlx, OPEN_EXIT_XPM, &game->exit_open) && load_sprite(mlx,
+		&& load_sprite(mlx, EXIT_OPEN_XPM, &game->exit_open) && load_sprite(mlx,
 			EXIT_CLOSED_XPM, &game->exit_closed));
 }

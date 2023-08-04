@@ -6,7 +6,7 @@
 /*   By: skulkamt <skulkamt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:18:12 by skulkamt          #+#    #+#             */
-/*   Updated: 2023/08/03 21:44:10 by skulkamt         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:40:08 by skulkamt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@
 # define WALL_XPM "assets/sprites/wall.xpm"
 # define FLOOR_XPM "assets/sprites/floor.xpm"
 # define COINS_XPM "assets/sprites/bone.xpm"
-# define PLAYER_FRONT_XPM "assets/sprites/player/front.xpm"
-# define OPEN_EXIT_XPM "assets/sprites/open-exit.xpm"
+# define PLAYER_FRONT_XPM "assets/sprites/player.xpm"
+# define EXIT_OPEN_XPM "assets/sprites/exit-open.xpm"
 # define EXIT_CLOSED_XPM "assets/sprites/exit-closed.xpm"
 
 # define GREEN "\033[0;32m"
