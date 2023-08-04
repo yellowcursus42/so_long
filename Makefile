@@ -1,5 +1,4 @@
 NAME			= so_long
-NAME_BONUS		= so_long_bonus
 
 GREEN			= \033[0;32m
 RED				= \033[0;31m
@@ -72,8 +71,8 @@ clean:
 				@echo
 
 fclean:
-				${REMOVE} ${NAME} ${NAME_BONUS}
-				@echo "${NAME}: ${RED}${NAME} and ${NAME_BONUS} were deleted${RESET}"
+				${REMOVE} ${NAME}
+				@echo "${NAME}: ${RED}${NAME} and were deleted${RESET}"
 				@echo
 
 re:				fclean all
