@@ -10,5 +10,5 @@ your_program="./so_long"
 # Loop through all files in the current directory
 for file in ./assets/maps/invalid/*; do
 	echo "$file"
-	"$your_program" "$file"
+	valgrind "$your_program" "$file"
 done
