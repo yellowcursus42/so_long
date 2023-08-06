@@ -19,8 +19,6 @@ MINILIBX_FLAGS	= -lmlx -lXext -lX11
 VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all \
 --track-origins=yes --quiet --tool=memcheck --keep-debuginfo=yes
 
-REMOVE 			= rm -f
-
 SRCS_DIR		= ./src/
 
 # all except header file.
@@ -36,11 +34,9 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 					utils.c\
 					)
 
-
-
 all:			${LIB_LIBFT} ${LIB_PRINTF} ${LIB_GNL} ${NAME}
 
-${NAME}:
+${NAME}:${LIB_LIBFT} ${LIB_PRINTF} ${LIB_GNL}
 				${CC} ${SRCS} ${LIB_PRINTF} ${LIB_LIBFT} ${LIB_GNL} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
 				@echo "$(NAME): $(GREEN)$(NAME) was compiled.$(RESET)"
 				@echo
@@ -54,14 +50,14 @@ $(DIR_GNL):
 	@git clone https://github.com/yellowcursus42/get_next_line ${DIR_GNL}
 
 ${LIB_LIBFT}:$(DIR_LIBFT) 
-				@echo
-				make -C ${DIR_LIBFT}
+	@echo
+	make -C ${DIR_LIBFT}
 ${LIB_PRINTF}:$(DIR_PRINTF) 
-				@echo
-				make -C ${DIR_PRINTF}
+	@echo
+	make -C ${DIR_PRINTF}
 ${LIB_GNL}:$(DIR_GNL) 
-				@echo
-				make -C ${DIR_GNL}
+	@echo
+	make -C ${DIR_GNL}
 
 
 clean:
@@ -69,10 +65,11 @@ clean:
 				make clean -C ${DIR_PRINTF}
 				make clean -C ${DIR_GNL}
 				@echo
-
 fclean:
-				${REMOVE} ${NAME}
-				@echo "${NAME}: ${RED}${NAME} and were deleted${RESET}"
+				make fclean -C ${DIR_LIBFT}
+				make fclean -C ${DIR_PRINTF}
+				make fclean -C ${DIR_GNL}
+				rm -f ${NAME}
 				@echo
 
 re:				fclean all
@@ -81,4 +78,4 @@ re:				fclean all
 run:			${NAME}
 				${VALGRIND} ./${NAME} assets/maps/valid/map4.ber
 
-.PHONY:			all clean fclean re  valgrind run
+.PHONY:			all clean fclean re run
